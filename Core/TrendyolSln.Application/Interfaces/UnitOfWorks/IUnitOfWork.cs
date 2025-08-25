@@ -1,0 +1,16 @@
+﻿using TrendyolSln.Application.Interfaces.Repositories;
+using TrendyolSln.Domain.Common;
+
+namespace TrendyolSln.Application.Interfaces.UnitOfWorks
+{
+    public interface IUnitOfWork:IAsyncDisposable
+    {
+        IReadRepository<T> GetReadRepository<T>() where T:class,IEntityBase,new();
+        IWriteRepository<T> GetWriteRepository<T>() where T : class, IEntityBase, new();
+
+        Task<int> saveAsync();
+        int Save();
+
+
+    }
+}
