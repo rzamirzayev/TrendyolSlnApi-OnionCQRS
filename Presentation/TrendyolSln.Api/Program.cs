@@ -1,6 +1,7 @@
 using TrendyolSln.Persistence;
 using TrendyolSln.Application;
 using TrendyolSln.Mapper;
+using TrendyolSln.Application.Exceptions;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -30,6 +31,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.ConfigureExceptionHandlingMiddleware();
 app.UseAuthorization();
 
 app.MapControllers();
