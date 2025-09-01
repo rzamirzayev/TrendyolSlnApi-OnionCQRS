@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TrendyolSln.Application.Interfaces.Repositories;
 using TrendyolSln.Application.Interfaces.UnitOfWorks;
+using TrendyolSln.Domain.Entities;
 using TrendyolSln.Persistence.Context;
 using TrendyolSln.Persistence.Repositories;
 using TrendyolSln.Persistence.UnitOfWorks;
@@ -22,6 +23,18 @@ namespace TrendyolSln.Persistence
             services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
 
             services.AddScoped<IUnitOfWork,UnitOfWork>();
+
+            services.AddIdentityCore<User>(opt =>
+            {
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequiredLength = 2;
+                opt.Password.RequireUppercase = false;
+                opt.Password.RequireLowercase = false;
+                opt.Password.RequireDigit = false;
+                opt.SignIn.RequireConfirmedEmail = false;
+            })
+                .AddRoles<Role>()
+                .AddEntityFrameworkStores<AppDbContext>();
 
         }
     }

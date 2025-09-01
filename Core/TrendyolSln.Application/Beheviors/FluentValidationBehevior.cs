@@ -27,9 +27,6 @@ namespace TrendyolSln.Application.Beheviors
            
             return next();
 
-
-
-
         }
     }
 }

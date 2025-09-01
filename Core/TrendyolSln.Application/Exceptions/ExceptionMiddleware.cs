@@ -41,7 +41,6 @@ namespace TrendyolSln.Application.Exceptions
             List<string> errors = new()
             {
                 $"Xeta:{exception.Message}",
-                $"Sebebi:{exception.InnerException?.ToString()}"
             };
             return httpContext.Response.WriteAsync(new ExceptionModel()
             {
