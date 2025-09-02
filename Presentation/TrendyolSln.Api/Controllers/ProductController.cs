@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TrendyolSln.Application.Features.Products.Command.CreateProduct;
 using TrendyolSln.Application.Features.Products.Command.DeleteProduct;
@@ -19,6 +20,7 @@ namespace TrendyolSln.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAllProducts()
         {
             var response = await mediator.Send(new GetAllProductQueryRequest());

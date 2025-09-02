@@ -16,6 +16,17 @@ namespace TrendyolSln.Application.Features.Auth.Rules
             if (user != null) throw new UserAlreadyExistException(); 
             return Task.CompletedTask;
         }
+        public Task EmailOrPasswordShouldNotBeInvalid(User? user,bool checkPassword)
+        {
+            if (user == null || !checkPassword) throw new EmailOrPasswordInvalidException();
+            return Task.CompletedTask;
+        }
+
+        public Task RefreshTokenShotuldNotBeExpired(DateTime? expiryDate)
+        {
+            if(expiryDate<DateTime.UtcNow) throw new RefreshTokenExpiredException();
+            return Task.CompletedTask;
+        }
 
     }
 }
