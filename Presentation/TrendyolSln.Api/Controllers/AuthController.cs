@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using TrendyolSln.Application.Features.Auth.Command.Login;
 using TrendyolSln.Application.Features.Auth.Command.RefreshToken;
 using TrendyolSln.Application.Features.Auth.Command.Register;
+using TrendyolSln.Application.Features.Auth.Command.Revoke;
+using TrendyolSln.Application.Features.Auth.Command.RevokeAll;
 
 namespace TrendyolSln.Api.Controllers
 {
@@ -36,6 +38,20 @@ namespace TrendyolSln.Api.Controllers
         {
             var response = await mediator.Send(request);
             return StatusCode(StatusCodes.Status200OK, response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Revoke(RevokeCommandRequest request)
+        {
+            await mediator.Send(request);
+            return StatusCode(StatusCodes.Status200OK);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RevokeAll()
+        {
+            await mediator.Send(new RevokeAllCommandRequest());
+            return StatusCode(StatusCodes.Status200OK);
         }
 
     }
