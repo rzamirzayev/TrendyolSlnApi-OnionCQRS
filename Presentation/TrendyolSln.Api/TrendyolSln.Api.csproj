@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\TrendyolSln.Mapper\TrendyolSln.Mapper.csproj" />
     <ProjectReference Include="..\..\İnfrastructure\TrendyolSln.Persistence\TrendyolSln.Persistence.csproj" />
+    <ProjectReference Include="..\..\İnfrastructure\TrendyolSln.İnfrastructure\TrendyolSln.İnfrastructure.csproj" />
   </ItemGroup>
 
 </Project>
