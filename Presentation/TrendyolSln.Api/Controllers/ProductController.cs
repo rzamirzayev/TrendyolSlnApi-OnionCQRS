@@ -9,6 +9,7 @@ using TrendyolSln.Application.Features.Products.Queries.GetAllProducts;
 namespace TrendyolSln.Api.Controllers
 {
     [Route("api/[controller]/[action]")]
+    [Authorize]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -20,7 +21,6 @@ namespace TrendyolSln.Api.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public async Task<IActionResult> GetAllProducts()
         {
             var response = await mediator.Send(new GetAllProductQueryRequest());

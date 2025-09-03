@@ -21,6 +21,9 @@ namespace TrendyolSln.Application
             services.AddValidatorsFromAssembly(assembly);
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(FluentValidationBehevior<,>));
+
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RedisCacheBehavior<,>));
+
         }
 
         private static IServiceCollection AddRulesFromAssemblyContaining(

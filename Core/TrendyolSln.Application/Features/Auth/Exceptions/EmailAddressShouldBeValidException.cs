@@ -13,6 +13,6 @@ namespace TrendyolSln.Application.Features.Auth.Exceptions
         {
         }
     }
-    {
-    }
+    
+    
 }

@@ -11,10 +11,10 @@ namespace TrendyolSln.Application.Features.Auth.Command.Revoke
     {
         public RevokeCommandValidator()
         {
-            RuleFor(x=>x.Email)
+            RuleFor(x => x.Email)
                 .EmailAddress()
                 .NotEmpty()
-                .WithMessage("Email is required and must be a valid email address.")
+                .WithMessage("Email is required and must be a valid email address.");
         }
     }
 }
